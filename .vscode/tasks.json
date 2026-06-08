@@ -7,6 +7,29 @@
 			"command": "mvn",
 			"args": ["compile"],
 			"group": "build"
+		},
+		{
+			"label": "Build Modules",
+			"type": "shell",
+			"command": "mvn",
+			"args": ["install", "-DskipTests", "-q"],
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Server",
+			"type": "shell",
+			"command": "mvn",
+			"args": [
+				"-pl", "server",
+				"org.codehaus.mojo:exec-maven-plugin:3.5.0:java",
+				{
+					"value": "-Dexec.mainClass=com.stickerexchange.server.app.ServerMain",
+					"quoting": "strong"
+				}
+			],
+			"dependsOn": "Build Modules",
+			"isBackground": true,
+			"problemMatcher": []
 		}
 	]
 }

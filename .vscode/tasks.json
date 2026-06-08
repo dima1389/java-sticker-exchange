@@ -30,6 +30,22 @@
 			"dependsOn": "Build Modules",
 			"isBackground": true,
 			"problemMatcher": []
+		},
+		{
+			"label": "Run Client GUI",
+			"type": "shell",
+			"command": "mvn",
+			"args": [
+				"-pl", "client",
+				"org.codehaus.mojo:exec-maven-plugin:3.5.0:java",
+				{
+					"value": "-Dexec.mainClass=com.stickerexchange.client.app.ClientMain",
+					"quoting": "strong"
+				}
+			],
+			"dependsOn": "Build Modules",
+			"isBackground": true,
+			"problemMatcher": []
 		}
 	]
 }
